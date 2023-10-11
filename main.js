@@ -6,6 +6,7 @@ const btnReset = document.querySelector('#btnReset')
 
 closedCookieBtn.addEventListener('click', handleOpenClick)
 btnReset.addEventListener('click', toggleContent)
+document.addEventListener('keydown', handleOpenEnter)
 
 const phrasesArray = [
   'A vida trará coisas boas se tiver paciência.',
@@ -26,6 +27,14 @@ const phrasesArray = [
 function handleOpenClick() {
   content2.querySelector('p').innerText = selectRandomPhrase()
   toggleContent()
+}
+
+function handleOpenEnter(event) {
+  if (event.key === 'Enter' && content2.classList.contains('hide')) {
+    handleOpenClick()
+  } else {
+    toggleContent()
+  }
 }
 
 function selectRandomPhrase() {
